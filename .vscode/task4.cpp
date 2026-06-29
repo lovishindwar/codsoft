@@ -24,7 +24,7 @@ int main() {
     bool running = true;
 
     cout << "=================================\n";
-    cout << "    🚀 Simple To-Do Manager     \n";
+    cout << "     Simple To-Do Manager     \n";
     cout << "=================================\n";
 
     while (running) {
@@ -33,7 +33,7 @@ int main() {
         
         // Input validation for menu selection
         if (!(cin >> choice)) {
-            cout << "❌ Invalid input. Please enter a number.\n";
+            cout << " Invalid input. Please enter a number.\n";
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
@@ -53,11 +53,11 @@ int main() {
                 removeTask(todoList);
                 break;
             case 5:
-                cout << "\nGoodbye! Have a productive day! 👋\n";
+                cout << "\nGoodbye! Have a productive day! \n";
                 running = false;
                 break;
             default:
-                cout << "❌ Invalid choice. Please select an option between 1 and 5.\n";
+                cout << " Invalid choice. Please select an option between 1 and 5.\n";
         }
     }
 
@@ -84,19 +84,19 @@ void addTask(vector<Task>& todoList) {
     getline(cin, taskDesc); // Use getline to allow spaces in task descriptions
 
     if (taskDesc.empty()) {
-        cout << "❌ Task description cannot be empty!\n";
+        cout << " Task description cannot be empty!\n";
         return;
     }
 
     // Insert task as pending by default
     todoList.push_back({taskDesc, false});
-    cout << "📝 Task added successfully!\n";
+    cout << " Task added successfully!\n";
 }
 
 // Function to print all current tasks
 void viewTasks(const vector<Task>& todoList) {
     if (todoList.empty()) {
-        cout << "\n📭 Your to-do list is empty. Nice job!\n";
+        cout << "\n Your to-do list is empty. Nice job!\n";
         return;
     }
 
@@ -111,7 +111,7 @@ void viewTasks(const vector<Task>& todoList) {
 // Function to mark a specific task index as completed
 void markTaskCompleted(vector<Task>& todoList) {
     if (todoList.empty()) {
-        cout << "\n❌ No tasks available to complete.\n";
+        cout << "\n No tasks available to complete.\n";
         return;
     }
 
@@ -120,7 +120,7 @@ void markTaskCompleted(vector<Task>& todoList) {
     size_t index;
 
     if (!(cin >> index) || index < 1 || index > todoList.size()) {
-        cout << "❌ Invalid task number.\n";
+        cout << " Invalid task number.\n";
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         return;
@@ -128,13 +128,13 @@ void markTaskCompleted(vector<Task>& todoList) {
 
     // Convert to 0-based index
     todoList[index - 1].isCompleted = true;
-    cout << "✅ Task marked as completed!\n";
+    cout << " Task marked as completed!\n";
 }
 
 // Function to remove a task from the vector
 void removeTask(vector<Task>& todoList) {
     if (todoList.empty()) {
-        cout << "\n❌ No tasks available to remove.\n";
+        cout << "\n No tasks available to remove.\n";
         return;
     }
 
@@ -143,7 +143,7 @@ void removeTask(vector<Task>& todoList) {
     size_t index;
 
     if (!(cin >> index) || index < 1 || index > todoList.size()) {
-        cout << "❌ Invalid task number.\n";
+        cout << " Invalid task number.\n";
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         return;
@@ -151,5 +151,5 @@ void removeTask(vector<Task>& todoList) {
 
     // Erase task from the vector
     todoList.erase(todoList.begin() + (index - 1));
-    cout << "🗑️ Task removed successfully!\n";
+    cout << " Task removed successfully!\n";
 }
