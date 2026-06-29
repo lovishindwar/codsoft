@@ -38,7 +38,7 @@ int main() {
             // Check if the current move won the game
             if (checkWin(board, currentPlayer)) {
                 displayBoard(board);
-                cout << "\n🎉 Player " << currentPlayer << " wins! Congratulations! 🎉\n";
+                cout << "\n Player " << currentPlayer << " wins! Congratulations! \n";
                 
                 // Ask to play again
                 char reply;
@@ -54,7 +54,7 @@ int main() {
             // Check if the game is a draw
             else if (checkDraw(board)) {
                 displayBoard(board);
-                cout << "\n🤝 It's a draw! Well played both. 🤝\n";
+                cout << "\n It's a draw! Well played both. \n";
                 
                 char reply;
                 cout << "\nDo you want to play again? (y/n): ";
