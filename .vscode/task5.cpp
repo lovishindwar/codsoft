@@ -59,7 +59,7 @@ public:
 
     void incrementDay() {
         currentDay++;
-        cout << "\n📆 Time passes... It is now Day " << currentDay << ".\n";
+        cout << "\n Time passes... It is now Day " << currentDay << ".\n";
     }
 
     int getCurrentDay() const { return currentDay; }
@@ -67,7 +67,7 @@ public:
     // Add Book
     void addBook(const string& title, const string& author, const string& isbn) {
         books.push_back(Book(title, author, isbn));
-        cout << "📚 Book added successfully!\n";
+        cout << " Book added successfully!\n";
     }
 
     // Search Books
@@ -102,17 +102,17 @@ public:
         for (auto& book : books) {
             if (book.getIsbn() == isbn) {
                 if (!book.getAvailability()) {
-                    cout << "❌ Error: This book is already checked out!\n";
+                    cout << " Error: This book is already checked out!\n";
                     return;
                 }
                 book.setAvailability(false);
                 transactions.push_back({isbn, borrower, currentDay, true});
-                cout << "✅ Success: \"" << book.getTitle() << "\" checked out to " << borrower << " on Day " << currentDay << ".\n";
-                cout << "ℹ️ Due Date: Day " << (currentDay + RENTAL_PERIOD) << "\n";
+                cout << " Success: \"" << book.getTitle() << "\" checked out to " << borrower << " on Day " << currentDay << ".\n";
+                cout << " Due Date: Day " << (currentDay + RENTAL_PERIOD) << "\n";
                 return;
             }
         }
-        cout << "❌ Error: Book with ISBN " << isbn << " not found.\n";
+        cout << " Error: Book with ISBN " << isbn << " not found.\n";
     }
 
     // Return Book & Calculate Fines
@@ -120,7 +120,7 @@ public:
         for (auto& book : books) {
             if (book.getIsbn() == isbn) {
                 if (book.getAvailability()) {
-                    cout << "❌ Error: This book is already inside the library.\n";
+                    cout << " Error: This book is already inside the library.\n";
                     return;
                 }
 
@@ -131,28 +131,28 @@ public:
                         book.setAvailability(true);
 
                         int daysKept = currentDay - tx.checkoutDay;
-                        cout << "✅ Success: \"" << book.getTitle() << "\" returned on Day " << currentDay << ".\n";
-                        cout << "ℹ️ Days kept: " << daysKept << " (Max allowed: " << RENTAL_PERIOD << ")\n";
+                        cout << " Success: \"" << book.getTitle() << "\" returned on Day " << currentDay << ".\n";
+                        cout << " Days kept: " << daysKept << " (Max allowed: " << RENTAL_PERIOD << ")\n";
 
                         if (daysKept > RENTAL_PERIOD) {
                             int overdueDays = daysKept - RENTAL_PERIOD;
                             double fine = overdueDays * FINE_PER_DAY;
-                            cout << "⚠️ OVERDUE FINE: " << overdueDays << " days late. Fine incurred: $" << fixed << setprecision(2) << fine << "\n";
+                            cout << " OVERDUE FINE: " << overdueDays << " days late. Fine incurred: $" << fixed << setprecision(2) << fine << "\n";
                         } else {
-                            cout << "🎉 Returned on time! No fines applied.\n";
+                            cout << " Returned on time! No fines applied.\n";
                         }
                         return;
                     }
                 }
             }
         }
-        cout << "❌ Error: Transaction details matching ISBN " << isbn << " not found.\n";
+        cout << " Error: Transaction details matching ISBN " << isbn << " not found.\n";
     }
 
     // Display entire catalog
     void displayInventory() const {
         if (books.empty()) {
-            cout << "\n📭 The library inventory is currently empty.\n";
+            cout << "\n The library inventory is currently empty.\n";
             return;
         }
         cout << "\n--- Complete Library Catalog ---\n";
@@ -183,7 +183,7 @@ int main() {
     int choice;
     while (true) {
         cout << "\n=========================================\n";
-        cout << "       🏛️  LIBRARY MANAGEMENT SYSTEM     \n";
+        cout << "         LIBRARY MANAGEMENT SYSTEM     \n";
         cout << "       Simulated Day Tracker: Day [" << lib.getCurrentDay() << "]\n";
         cout << "=========================================\n";
         cout << "1. Search for a Book\n";
@@ -197,7 +197,7 @@ int main() {
         cout << "Select an option (1-7): ";
 
         if (!(cin >> choice)) {
-            cout << "❌ Invalid input. Numbers only please.\n";
+            cout << " Invalid input. Numbers only please.\n";
             clearBuffer();
             continue;
         }
@@ -246,7 +246,7 @@ int main() {
                 cout << "\nExiting Library Manager. Have a nice day!\n";
                 return 0;
             default:
-                cout << "❌ Choice out of bounds! Please pick from options 1-7.\n";
+                cout << " Choice out of bounds! Please pick from options 1-7.\n";
         }
     }
 }
